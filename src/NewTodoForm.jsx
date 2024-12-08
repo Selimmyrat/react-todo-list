@@ -5,7 +5,8 @@ export default function NewTodoForm({ onSubmit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (newItem === "") return;
+    console.log(e)
+    if (newItem === "" || newItem === " ") return;
 
     onSubmit(newItem);
 
@@ -15,12 +16,14 @@ export default function NewTodoForm({ onSubmit }) {
     <form onSubmit={handleSubmit} className="new-item-form">
       <div className="form-row">
         <label htmlFor="item">New Item</label>
-        <input
+         <input
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           type="text"
           id="item"
         />
+        { newItem === "" && "Please text something"} 
+        
       </div>
       <button className="btn">Add</button>
     </form>
